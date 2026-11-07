@@ -1,3 +1,14 @@
+# Status, 2026-11-08 (repo audit and housekeeping)
+
+Cloned the repo fresh and ran everything on a clean `npm install`. Nothing in the engine, content or game code changed.
+- Verified: typecheck clean in all three packages; engine 40, content 3, app 195, all passing; `build:web` bundles. This matches the 2026-11-07 entry below.
+- Removed six byte-identical Finder copies that had been committed (`NavProvider 2.tsx`, `SessionProvider 2.tsx`, `SettingsProvider 2.tsx`, `sheets/PendingSheet 2.tsx`, `sheets/RoleSheet 2.tsx`, `sheets/common 2.ts`). Nothing imported them.
+- `.expo/` is now in `.gitignore`.
+- README brought up to date (test counts, tutorial and rulebook built, fonts and sounds present, what still needs a person).
+- Still open, unchanged: listen to the 16 sounds; play on a real phone for frame rate; the fresh-eyes checks; confirm the printed rules in `Tipping_Point.md` say hands are public (that file is not in this repo); font licence record; Phase 6 art decision.
+
+---- earlier status ----
+
 # Status, 2026-11-07 (reveal holds tokens and pawns)
 
 During a Ravage reveal the board already showed each hit as its badge appeared; owner tokens and pawn evacuations still changed at once, behind the card. Now a token stays on a tile, and a pawn stays standing on it, until that tile's badge shows it lost (`displayPlayers` and the owner in `displayTiles`, `core/reveal.ts`). Nothing in the engine or content changed.
