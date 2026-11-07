@@ -243,14 +243,55 @@ const RAVAGE: Record<string, () => Shape[]> = {
   ],
 };
 
-/** Scene for a card: a Ravage gets its own, a Tool shares its biome's header, an Event has no scene (it keeps its own mark). */
+
+// ---- Event scenes, one per Event card ----------------------------------------------------------------------------------
+
+const walker = (x: number, y: number, shirt: Fill, s = 1): Shape[] => [
+  circle(x, y - 13 * s, 2.6 * s, "#E6C29A"), fillPath(`M${x - 3 * s},${y - 10 * s} H${x + 3 * s} L${x + 2.4 * s},${y - 3 * s} H${x - 2.4 * s} Z`, shirt),
+  line(`M${x - 1.2 * s},${y - 3 * s} L${x - 2.6 * s},${y} M${x + 1.2 * s},${y - 3 * s} L${x + 2.6 * s},${y}`, "ink", 1.5 * s),
+];
+const crate = (x: number, y: number, w: number): Shape[] => [rect(x, y, w, w, "#B98A5B"), line(`M${x},${y} L${x + w},${y + w} M${x + w},${y} L${x},${y + w}`, C.trunk, 1.1), rect(x, y, w, 1.6, C.trunk)];
+
+const EVENT: Record<string, () => Shape[]> = {
+  "E-1": () => [
+    sky(C.skyCool), rolling(48, C.grass), ...ground(56, C.grassDark), ...cloud(26, 16, 0.9), line("M88,18 q4,-4 8,0 q4,-4 8,0", "ink", 1.3),
+    circle(44, 36, 12, "ink"), circle(76, 36, 12, "ink"), circle(44, 36, 8, "#BFD9E4"), circle(76, 36, 8, "#BFD9E4"), rect(54, 31, 12, 10, "ink"),
+    line("M40,32 q3,-3 7,-2 M72,32 q3,-3 7,-2", C.white, 1.2, 0.8), rect(14, 40, 14, 18, C.cut), rect(17, 38, 8, 4, C.rockDark), line("M17,46 h8 M17,50 h8 M17,54 h5", C.trunk, 1),
+  ],
+  "E-2": () => [
+    sky(C.skyWarm), ...sun(100, 16, 6), rolling(50, C.grass), ...ground(56, C.grassDark),
+    ...[0, 1, 2].flatMap((i) => [rect(40, 54 - i * 5, 40, 5, "#C9A24B"), rect(40, 54 - i * 5, 40, 1.4, "#E6CE85"), line(`M46,${57 - i * 5} h28`, "#8A6A25", 0.8, 0.6)]),
+    line("M60,40 V30", C.leaf, 2), fillPath("M60,34 q-9,-1 -10,-9 q9,0 10,9 Z", C.leaf), fillPath("M60,32 q9,-1 10,-9 q-9,0 -10,9 Z", "#6E9C58"), rect(86, 40, 18, 12, C.cut), line("M86,40 L95,47 L104,40", C.trunk, 1.1),
+  ],
+  "E-3": () => [
+    sky(C.skyWarm), ...sun(96, 18, 7), ...cloud(26, 16, 1), rolling(42, "#8DAA86"), ...ground(52, C.grass), fillPath("M0,66 Q40,52 120,60 V72 H0 Z", C.sand),
+    ...walker(30, 64, "#C9594A", 1.4), ...walker(58, 60, "#3F7FB0", 1.4), ...walker(86, 58, "#E0A93B", 1.4), line("M92,44 v-8", C.leafDark, 1.3), fillPath("M92,38 q-5,0 -6,-5 q5,0 6,5 Z", C.leaf),
+  ],
+  "E-4": () => [
+    sky(C.skySmog), circle(100, 22, 6, C.fire, 0.8), ...ground(50, C.concreteDark), ...smokestack(24, 50, 34), ...smokestack(42, 50, 24), rect(14, 42, 40, 8, C.concreteDark),
+    rect(66, 38, 36, 24, "#5A3F2B"), rect(66, 38, 36, 5, "#7A5636"), line("M78,38 v-5 h12 v5", "#5A3F2B", 2), rect(82, 46, 4, 5, "#C9A24B"),
+  ],
+  "E-5": () => [
+    sky(C.skyDusk), ...ground(54, "#9A7C58"), ...crate(22, 38, 16), ...crate(38, 38, 16), ...crate(30, 22, 16),
+    rect(70, 44, 26, 10, "#4A5560"), rect(72, 42, 26, 10, "#5B6773"), rect(74, 40, 26, 10, "#6B7884"),
+    fillPath("M84,10 l14,3 l-3,14 l-14,-3 Z", C.white), line("M86,14 l10,2 M85,18 l8,1.6", C.concreteDark, 1), line("M92,30 V37 M89,34 l3,4 l3,-4", "ink", 1.6),
+  ],
+  "E-6": () => [
+    sky("#F2D9A0"), circle(60, 22, 17, "#F0A83A"), circle(60, 22, 12, "#F6D272"), ...ground(48, "#C79A62"),
+    line("M0,56 l14,-3 l8,5 l10,-6 l12,4 M70,54 l12,3 l10,-5 l12,4 M30,62 l12,-3 l8,5 M84,64 l10,-4 l8,3", C.soilDark, 1.3),
+    line("M18,38 q4,-3 0,-6 t0,-6 M102,38 q4,-3 0,-6 t0,-6 M34,40 q4,-3 0,-6 t0,-6", "#E7863A", 1.6, 0.8), line("M60,56 V46 q0,-6 5,-8", C.leafDark, 1.8), fillPath("M65,38 q4,2 3,7 q-4,-1 -3,-7 Z", "#8A8A4A"),
+  ],
+};
+
+/** Scene for a card: a Ravage gets its own, a Tool shares its biome's header, an Event has its own. */
 export function sceneForCard(card: { type: string; id: string; biome?: string }): Shape[] | null {
   if (card.type === "ravage") return (RAVAGE[card.id] ?? BIOME[card.biome ?? ""] ?? (() => null))() ;
   if (card.type === "tool") return (BIOME[card.biome ?? ""] ?? (() => null))();
+  if (card.type === "event") return EVENT[card.id]?.() ?? null;
   return null;
 }
 export const biomeScene = (biome: string): Shape[] | null => (BIOME[biome] ?? (() => null))();
-export const SCENE_IDS = { biomes: Object.keys(BIOME), ravages: Object.keys(RAVAGE) };
+export const SCENE_IDS = { biomes: Object.keys(BIOME), ravages: Object.keys(RAVAGE), events: Object.keys(EVENT) };
 
 // ---- role emblems, drawn in a -10..10 box in ink on a round badge ------------------------------------------------------
 

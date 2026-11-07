@@ -1,3 +1,13 @@
+# Status, 2026-11-08 (Phase 6 finished: Event scenes and a card back with the six biomes)
+
+Closes the gaps left in the Phase 6 art. Nothing in the engine or content package changed.
+- **Event cards** (6) now have their own scene each, in `core/illustrations.ts`: Citizen Science (binoculars and a clipboard), Grant Funding (a coin stack with a seedling and an envelope), Volunteer Day (three walkers, one carrying a sapling), Industrial Lobby (smokestacks beside a briefcase), Supply Squeeze (crates and a card dropping onto a deck), Heat Dome (a sun over cracked ground). The old mark from `game/eventIcons.tsx` stays as the small seal in the corner, so an Event is still told apart by more than the picture.
+- **Card back:** the hex mark gets a row of six small hexes in the biome colours (from card width 120 up; smaller backs are unchanged).
+- Every card type in the deck now has a scene. The tests were widened to match: all 6 Events have one, no scene is left over, no two scenes draw the same picture. Typecheck clean; engine 40, content 3, app 202; `build:web` bundles.
+- Looked at in headless Chromium: all six Event scenes on a contact sheet, and a Heat Dome Event in a running game (picture and seal). Not seen: the other five Events on a card in play, the new card-back row (the card backs on screen so far are below the 120 px width where it shows), 200% text, a no-colour check, a real phone.
+
+---- earlier status ----
+
 # Status, 2026-11-08 (plan Phase 6: the art upgrade, drawn in vector)
 
 Phase 6 is in, without commissioned art. Every scene is vector data in `core/illustrations.ts`, drawn by `game/Illustration.tsx`, so a commissioned picture can replace any one of them later with no layout change. Nothing in the engine or content package changed.

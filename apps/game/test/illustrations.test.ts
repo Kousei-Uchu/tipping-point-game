@@ -19,11 +19,13 @@ describe("Phase 6 spot illustrations", () => {
     for (const c of ravages) expect(SCENE_IDS.ravages, c.id).toContain(c.id);
     expect([...SCENE_IDS.ravages].sort()).toEqual(ravages.map((c) => c.id).sort());
   });
-  it("a Tool shares its biome's header; an Event has no scene and keeps its own mark", () => {
+  it("every Event card has its own scene, and a Tool shares its biome's header", () => {
+    const events = content.cards.filter((c) => c.type === "event");
+    expect(events.length).toBe(6);
+    for (const e of events) expect(sceneForCard(e), e.id).not.toBeNull();
+    expect([...SCENE_IDS.events].sort()).toEqual(events.map((e) => e.id).sort());
     const tool = content.cards.find((c) => c.type === "tool")!;
     expect(sceneForCard(tool)).not.toBeNull();
-    const ev = content.cards.find((c) => c.type === "event")!;
-    expect(sceneForCard(ev)).toBeNull();
   });
   it("scenes are non-empty, stay inside the box and draw something different from every other scene", () => {
     const seen = new Set<string>();
@@ -33,6 +35,13 @@ describe("Phase 6 spot illustrations", () => {
       expect(inside(sh, SCENE_W, SCENE_H), c.id).toBe(true);
       const svg = toSvg(sh, SCENE_W, SCENE_H);
       expect(seen.has(svg), c.id).toBe(false);
+      seen.add(svg);
+    }
+    for (const e of content.cards.filter((c) => c.type === "event")) {
+      const sh = sceneForCard(e)!;
+      expect(inside(sh, SCENE_W, SCENE_H), e.id).toBe(true);
+      const svg = toSvg(sh, SCENE_W, SCENE_H);
+      expect(seen.has(svg), e.id).toBe(false);
       seen.add(svg);
     }
     for (const b of biomes) { const svg = toSvg(biomeScene(b)!, SCENE_W, SCENE_H); expect(seen.has(svg), b).toBe(false); seen.add(svg); }

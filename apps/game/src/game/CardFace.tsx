@@ -27,6 +27,7 @@ interface Props {
   size?: CardSize;
 }
 
+const BIOME_KEYS = Object.keys(content.biomes) as (keyof typeof content.biomes)[];
 const EVENT_BAND = "#C9C1A8";
 
 const kindOf = (card: Card) =>
@@ -111,12 +112,12 @@ function Art({ card, width, m }: { card: Card; width: number; m: CardMetrics }) 
         {scene ? (
           <>
             <SceneView shapes={scene} width={width} height={h} />
-            {biomeId ? (
-              <G>
-                <Circle cx={sealX} cy={sealY} r={sealR} fill={materials.stock} fillOpacity={0.82} stroke={colors.ink} strokeWidth={1} />
-                <Glyph id={biomeId} x={sealX} y={sealY} size={sealR * 1.25} color={colors.ink} />
-              </G>
-            ) : null}
+            <G>
+              <Circle cx={sealX} cy={sealY} r={sealR} fill={materials.stock} fillOpacity={0.82} stroke={colors.ink} strokeWidth={1} />
+              {biomeId ? <Glyph id={biomeId} x={sealX} y={sealY} size={sealR * 1.25} color={colors.ink} /> : (
+                <G transform={`translate(${sealX} ${sealY}) scale(${(sealR * 1.25) / 20})`}><EventIcon id={card.id} color={colors.ink} /></G>
+              )}
+            </G>
           </>
         ) : (
           <>
@@ -225,6 +226,7 @@ export function CardBack({ width }: { width: number }) {
         <Rect x={3.2} y={3.2} width={33.6} height={48.6} rx={1.8} fill="none" stroke={materials.kraft} strokeOpacity={0.8} strokeWidth={0.5} />
         <Path d="M20,13 L30.5,19 V31 L20,37 L9.5,31 V19 Z" fill={darken(colors.ink, 0.25)} stroke={materials.kraft} strokeWidth={1.5} strokeLinejoin="round" />
         <Path d="M20,32.5 V21 M15.2,25.2 L20,20.4 L24.8,25.2" fill="none" stroke={materials.kraft} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round" />
+        {wordmark ? BIOME_KEYS.map((k, i) => <Path key={k} d={`M${20 + (i - 2.5) * 3.4},39.4 l1.1,0.64 v1.28 l-1.1,0.64 l-1.1,-0.64 v-1.28 Z`} fill={content.biomes[k].healthy_hex} stroke={materials.kraft} strokeWidth={0.18} />) : null}
         <Path d="M10,44 H30" stroke={materials.kraft} strokeOpacity={0.7} strokeWidth={0.7} strokeLinecap="round" />
         {wordmark ? <SvgText x={20} y={48.4} textAnchor="middle" fontSize={3.4} fontFamily={stampFont} letterSpacing={0.5} fill={materials.kraft}>TIPPING POINT</SvgText> : null}
       </Svg>

@@ -32,7 +32,7 @@ Phases 1 to 5 are built. The rules engine and content package were not touched. 
 | 3. Motion and sound | Built. Ended up with a small `requestAnimationFrame` tween hook, not Reanimated (the board is SVG, so the native driver would not help). Sounds are synthesised, so no third-party licence | Nobody has listened to the sounds or felt the motion on a phone. Retune by ear |
 | 4. Cards and Ravage | Built, driven through full games in Chromium | Cascade, Extinction and Skip-all beats not watched. Draw pile does not pulse yet. Surge test needs real players |
 | 5. Teaching and screens | Built and looked at in Chromium at phone and desktop size (two result-screen Metre bugs found and fixed) | The tutorial's nine coach steps were clicked through by script without the rulebook. Done-when still needs a person: someone new to the game finishing it unaided. |
-| 6. Art upgrade | Built in vector, no commissioned art: 6 biome headers, 24 Ravage scenes, 6 role emblems, box-lid panorama. Events keep their marks | Looked at in Chromium. Open: a no-colour and 200% text check of the new art, the other Ravage scenes seen on a card in play, a look on a real phone. Any scene can be replaced by commissioned art with no layout change |
+| 6. Art upgrade | Built in vector, no commissioned art: 6 biome headers, 24 Ravage scenes, 6 role emblems, box-lid panorama. 6 Event scenes, card back with biome row | Looked at in Chromium. Open: a no-colour and 200% text check of the new art, the other Ravage scenes seen on a card in play, a look on a real phone. Any scene can be replaced by commissioned art with no layout change |
 
 ### Next steps, in order
 
