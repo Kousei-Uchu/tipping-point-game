@@ -1,3 +1,15 @@
+# Status, 2026-11-08 (plan Phase 6: the art upgrade, drawn in vector)
+
+Phase 6 is in, without commissioned art. Every scene is vector data in `core/illustrations.ts`, drawn by `game/Illustration.tsx`, so a commissioned picture can replace any one of them later with no layout change. Nothing in the engine or content package changed.
+- **Biome headers** (6): one scene per biome, shared by that biome's Tool cards. **Ravage cards** (24): each has its own scene, four per biome, drawn from the card names (a saw among stumps, a road cut through trees, a sunk dam wall, and so on). The hazard triangle, the Surge ribbon and the stamp are unchanged. A small seal in the corner of the picture keeps the biome symbol, so a biome is still told apart by more than colour.
+- **Events** keep their own marks (`game/eventIcons.tsx`) on the neutral band; they have no scene on purpose.
+- **Role emblems** (6) on a round badge beside the role's name (`RoleCardView`, so the Role sheet and the role panel). **Box lid**: a drawn panorama of the six biomes above the title label (`LidPanorama` in `screens/TitleScreen.tsx`).
+- Scenes are cropped, never stretched, to the picture window at hand, sheet and reveal size, so everything that matters sits in the middle band. If a card has no scene it falls back to the old pattern and symbol.
+- Verified: typecheck clean; engine 40, content 3, app 202 (7 new in `test/illustrations.test.ts`: every biome and all 24 Ravage cards have a scene and no scene is left over, every role has an emblem, shapes stay in the box, no two scenes draw the same picture, drawing is deterministic); `build:web` bundles. Looked at in headless Chromium: a contact sheet of all 30 card scenes, the six emblems and the panorama; then the built app at 1280x800 and 390x844 (title with the panorama), a hand card (Rotational Grazing), a Ravage reveal (Drainage Scheme) and the Engineer, Courier and Activist emblems. No console or page errors.
+- Not verified: the other 22 Ravage scenes on a card in a running game (seen only on the contact sheet), the card art at 200% text, a no-colour check of the new art, phone-size reveal cards, iOS and Android (react-native-svg nested views are used for the picture window). The drawings are my own and plain by design; whether they are good enough to ship or should be replaced is a call for your eyes.
+
+---- earlier status ----
+
 # Status, 2026-11-08 (repo audit and housekeeping)
 
 Cloned the repo fresh and ran everything on a clean `npm install`. Nothing in the engine, content or game code changed.

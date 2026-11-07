@@ -4,6 +4,7 @@ import { useNav } from "../app/NavProvider";
 import { useSessionCtx } from "../app/SessionProvider";
 import { titleBoard } from "../core/titleBoard";
 import { TUTORIAL_OPTIONS } from "../core/tutorial";
+import { LidPanorama } from "../game/Illustration";
 import { MiniBoard } from "../game/MiniBoard";
 import { useTutorialStatus } from "../game/Tutorial";
 import { materials } from "../theme/materials";
@@ -18,7 +19,7 @@ import { useLayout } from "../ui/useLayout";
 /**
  * The box lid. A kraft lid on the felt holds a printed title label and the board, already starting to tip.
  * Under it the menu is a row of keys on a card, so no word sits straight on the felt.
- * Minimum art version: the wordmark is typeset (Fredoka); an illustrated lid scene can replace the board later.
+ * Minimum art version: the wordmark is typeset (Fredoka); the lid carries a drawn panorama of the six biomes (core/illustrations.ts) above the board.
  */
 export function TitleScreen() {
   const nav = useNav();
@@ -41,6 +42,7 @@ export function TitleScreen() {
   const lid = (
     <View style={[styles.lid, elevation.held]}>
       <View style={styles.lidInner}>
+        <View style={styles.scene}><LidPanorama width={boardW} /></View>
         <Plate style={styles.label} elevation="flat">
           <Label text="A cooperative game of 2 to 5 Stewards" />
           <Text variant="display" center accessibilityRole="header">Tipping Point</Text>
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
   lid: { backgroundColor: materials.kraft, borderRadius: radius.lg, borderWidth: 2, borderColor: materials.kraftDeep, padding: 10 },
   lidInner: { borderRadius: radius.md, borderWidth: 2, borderColor: materials.kraftDeep, borderStyle: "dashed", padding: 10, gap: space.md, alignItems: "center" },
   label: { padding: space.md, gap: space.xs, alignItems: "center", alignSelf: "stretch" },
+  scene: { borderWidth: 1.5, borderColor: materials.kraftDeep, borderRadius: radius.sm, overflow: "hidden" },
   boardWrap: { alignItems: "center" },
   menuCol: { width: 340 },
   menuColNarrow: { width: "100%", maxWidth: 360 },

@@ -11,7 +11,9 @@ import { materials } from "../theme/materials";
 import { colors, fonts, fontState } from "../theme/tokens";
 import { Plate } from "../ui/Plate";
 import { Text } from "../ui/Text";
+import { sceneForCard } from "../core/illustrations";
 import { Glyph, PatternDefs, patternId } from "./biomeArt";
+import { SceneView } from "./Illustration";
 
 interface Props {
   card: Card;
@@ -98,21 +100,38 @@ function Art({ card, width, m }: { card: Card; width: number; m: CardMetrics }) 
   const band = biome ? biome.healthy_hex : EVENT_BAND;
   const gs = Math.round(h * 0.62);
   const cx = width / 2, cy = h / 2;
+  const scene = sceneForCard(card);
+  const sealR = Math.max(7, Math.round(Math.min(width, h) * 0.17));
+  const sealX = width - sealR - 5, sealY = h - sealR - 5;
   return (
     <View style={{ width, height: h, borderRadius: Math.max(m.corner - 4, 3), overflow: "hidden", borderWidth: 1.5, borderColor: colors.ink }} accessibilityElementsHidden importantForAccessibility="no-hide-descendants">
       <Svg width={width} height={h}>
         <PatternDefs />
         <Rect x={0} y={0} width={width} height={h} fill={band} />
-        {biome ? (
-          <G transform={`scale(${PATTERN_PX})`}>
-            <Rect x={0} y={0} width={width / PATTERN_PX} height={h / PATTERN_PX} fill={`url(#${patternId(biomeId!)})`} />
-          </G>
-        ) : null}
-        {/* A lit seal behind the symbol keeps it clear of the pattern. */}
-        <Circle cx={cx} cy={cy} r={gs * 0.62} fill={materials.stock} fillOpacity={0.42} />
-        <Circle cx={cx} cy={cy} r={gs * 0.62} fill="none" stroke={darken(band, 0.4)} strokeOpacity={0.6} strokeWidth={1} />
-        {biomeId ? <Glyph id={biomeId} x={cx} y={cy} size={gs} color={colors.ink} /> : (
-          <G transform={`translate(${cx} ${cy}) scale(${gs / 22})`}><EventIcon id={card.id} color={colors.ink} /></G>
+        {scene ? (
+          <>
+            <SceneView shapes={scene} width={width} height={h} />
+            {biomeId ? (
+              <G>
+                <Circle cx={sealX} cy={sealY} r={sealR} fill={materials.stock} fillOpacity={0.82} stroke={colors.ink} strokeWidth={1} />
+                <Glyph id={biomeId} x={sealX} y={sealY} size={sealR * 1.25} color={colors.ink} />
+              </G>
+            ) : null}
+          </>
+        ) : (
+          <>
+            {biome ? (
+              <G transform={`scale(${PATTERN_PX})`}>
+                <Rect x={0} y={0} width={width / PATTERN_PX} height={h / PATTERN_PX} fill={`url(#${patternId(biomeId!)})`} />
+              </G>
+            ) : null}
+            {/* A lit seal behind the symbol keeps it clear of the pattern. */}
+            <Circle cx={cx} cy={cy} r={gs * 0.62} fill={materials.stock} fillOpacity={0.42} />
+            <Circle cx={cx} cy={cy} r={gs * 0.62} fill="none" stroke={darken(band, 0.4)} strokeOpacity={0.6} strokeWidth={1} />
+            {biomeId ? <Glyph id={biomeId} x={cx} y={cy} size={gs} color={colors.ink} /> : (
+              <G transform={`translate(${cx} ${cy}) scale(${gs / 22})`}><EventIcon id={card.id} color={colors.ink} /></G>
+            )}
+          </>
         )}
         <Rect x={0} y={h - 2} width={width} height={2} fill={darken(band, 0.35)} fillOpacity={0.7} />
         {card.type === "ravage" ? <Hazard x={Math.max(10, width * 0.1)} y={Math.max(10, h * 0.2)} r={Math.max(8, Math.round(width * 0.075))} /> : null}

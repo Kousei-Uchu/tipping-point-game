@@ -41,7 +41,7 @@ iOS and Android later: `npm run ios` / `npm run android -w @tipping-point/game` 
 - **Play (M2, M3):** title, lobby, game, result, settings, rulebook, guided tutorial, in-game play guide, hand, cards, Ravage reveal, Metre, end screens.
 - **Look and feel (plan phases 1 to 5):** done in the minimum-art form. See `Tipping_Point_Making_It_Feel_Like_a_Board_Game.md` and `docs/STYLE_GUIDE.md`. Fonts are bundled, sounds are synthesised (`docs/SOUNDS.md`), motion goes through one table (`theme/motion.ts`).
 - **Bots:** `packages/engine/src/bot.ts` follows Bot_Spec sections 1 to 4 (restore, fortify, stabilise, Ecologist, Activist, walk to work, `care` per level). Courier, Pilot, Gifts and personality modes are not played by bots yet. Bot seats are set in the lobby.
-- **Not yet:** golden-log replay against the Python sim (needs `--export-log` output wired into a test, see `Golden_Log_Format.md`), online rooms (M5), screen-reader and keyboard pass (M6), commissioned art (plan phase 6, optional).
+- **Not yet:** golden-log replay against the Python sim (needs `--export-log` output wired into a test, see `Golden_Log_Format.md`), online rooms (M5), screen-reader and keyboard pass (M6), commissioned art (the vector scenes from plan phase 6 are in; commissioned pictures could replace them one by one).
 - **Needs a person:** nobody has listened to the sounds or played on a real phone, and the fresh-eyes checks in the plan (five-second, photograph, Surge, tutorial without the rulebook) have not been run.
 
 ## Known gaps and choices
