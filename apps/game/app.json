@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "Tipping Point",
+    "slug": "tipping-point",
+    "version": "0.1.0",
+    "orientation": "default",
+    "scheme": "tippingpoint",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.example.tippingpoint" },
+    "android": { "package": "com.example.tippingpoint" },
+    "web": { "bundler": "metro", "output": "single", "favicon": "./assets/favicon.png", "name": "Tipping Point", "shortName": "Tipping Point", "backgroundColor": "#F6F3EA" }
+  }
+}

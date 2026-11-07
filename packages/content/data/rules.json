@@ -1,0 +1,83 @@
+{
+  "version": "1.3",
+  "rules_version": "1.3 draft",
+  "difficulty": {
+    "easy": {
+      "start_pressure": 1,
+      "opening_strike": 2,
+      "surge_cards": 5,
+      "evacuation_rounds": 1
+    },
+    "normal": {
+      "start_pressure": 2,
+      "opening_strike": 3,
+      "surge_cards": 6,
+      "evacuation_rounds": 2
+    },
+    "hard": {
+      "start_pressure": 3,
+      "opening_strike": 4,
+      "surge_cards": 6,
+      "evacuation_rounds": 3
+    }
+  },
+  "two_player_pressure_bonus": 1,
+  "deck": {
+    "ravage": 24,
+    "tool": 30,
+    "event": 6,
+    "ravage_per_biome": 4,
+    "tool_per_biome": 5,
+    "programme_per_biome": 3,
+    "single_use_per_biome": 2,
+    "programme_uses": 2
+  },
+  "tiles": {
+    "per_biome": 10,
+    "biomes": 6,
+    "hub": 1,
+    "total": 61
+  },
+  "metre": {
+    "bands": 5,
+    "ticks_per_band": 8,
+    "total_ticks": 40,
+    "trophy_at_or_below": 0,
+    "skull_at_or_above": 41,
+    "pressure": "ceil(ticks / 8)",
+    "start_ticks": {
+      "easy": 8,
+      "normal": 16,
+      "hard": 24
+    },
+    "restore_ticks_down": 2,
+    "fortify_ticks_down": 1,
+    "surge_ticks_up": 8
+  },
+  "turn": {
+    "move": 3,
+    "tool_actions": 1,
+    "ability_actions": 1,
+    "gifts": 1,
+    "draws": 1
+  },
+  "limits": {
+    "hand": 3,
+    "stabilise_markers": 6,
+    "shield_tokens": 8,
+    "steward_tokens_each": 12
+  },
+  "legacy": {
+    "healthy_token": 1,
+    "vulnerable_token": 0,
+    "guardian_bonus": 3
+  },
+  "end": {
+    "second_extinction_is_collapse": true,
+    "final_lap": true
+  },
+  "easy_catch_up": {
+    "4": "last seat +1 Tool",
+    "5": "last two seats +1 Tool"
+  }
+}

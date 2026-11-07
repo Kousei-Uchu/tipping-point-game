@@ -1,0 +1,105 @@
+{
+  "version": "1.3",
+  "biomes": [
+    {
+      "key": "forest",
+      "name": "Forest",
+      "ravage_theme": "Logging Boom",
+      "tool": "Reforestation Kit",
+      "programme": "Reforestation Programme",
+      "palette_name": "Moss green",
+      "healthy_hex": "#7A9C80",
+      "vulnerable_hex": "#9A9C86",
+      "danger": "Deforestation",
+      "icon": "Single pine tree, rounded triangle layers",
+      "edge_pattern": "Sawtooth (pine-tree zigzag)",
+      "tile_count": 10
+    },
+    {
+      "key": "coral",
+      "name": "Coral Reef",
+      "ravage_theme": "Bleaching Event",
+      "tool": "Coral Nursery",
+      "programme": "Coral Nursery Programme",
+      "palette_name": "Teal",
+      "healthy_hex": "#7DB5A2",
+      "vulnerable_hex": "#BFC9C0",
+      "danger": "Bleaching and acidification",
+      "icon": "Branching coral fan",
+      "edge_pattern": "Dots (polyp beads)",
+      "tile_count": 10
+    },
+    {
+      "key": "wetland",
+      "name": "Wetland",
+      "ravage_theme": "Drainage Scheme",
+      "tool": "Re-wetting Works",
+      "programme": "Re-wetting Programme",
+      "palette_name": "Olive-sage",
+      "healthy_hex": "#A4B08A",
+      "vulnerable_hex": "#C4B995",
+      "danger": "Drainage and reclamation",
+      "icon": "Two reeds with a cattail head",
+      "edge_pattern": "Wavy line (water ripple)",
+      "tile_count": 10
+    },
+    {
+      "key": "glacier",
+      "name": "Glacier",
+      "ravage_theme": "Thaw",
+      "tool": "Reflective Cover",
+      "programme": "Reflective Cover Programme",
+      "palette_name": "Ice grey-blue",
+      "healthy_hex": "#A9BDC9",
+      "vulnerable_hex": "#8E9EA8",
+      "danger": "Warming and melt",
+      "icon": "Angular ice peak with a highlight facet",
+      "edge_pattern": "Diamonds (ice crystals)",
+      "tile_count": 10
+    },
+    {
+      "key": "grassland",
+      "name": "Grassland",
+      "ravage_theme": "Overgrazing",
+      "tool": "Rotational Grazing",
+      "programme": "Rotational Grazing Programme",
+      "palette_name": "Warm sand",
+      "healthy_hex": "#CDB98C",
+      "vulnerable_hex": "#C2B6A0",
+      "danger": "Overgrazing and soil erosion",
+      "icon": "Three grass blades of different heights",
+      "edge_pattern": "Short vertical ticks (grass blades)",
+      "tile_count": 10
+    },
+    {
+      "key": "river",
+      "name": "River",
+      "ravage_theme": "Toxic Runoff",
+      "tool": "Filtration Barrier",
+      "programme": "Filtration Barrier Programme",
+      "palette_name": "Soft blue",
+      "healthy_hex": "#6E97C4",
+      "vulnerable_hex": "#A5AFB6",
+      "danger": "Pollution and runoff",
+      "icon": "Single S-shaped meander",
+      "edge_pattern": "Long parallel flow lines",
+      "tile_count": 10
+    }
+  ],
+  "hub": {
+    "name": "Research Station",
+    "hex": "#E4E0D4",
+    "note": "One sided, never damaged"
+  },
+  "ui": {
+    "ink_hex": "#1F2A30",
+    "paper_hex": "#F6F3EA",
+    "danger_hex": "#B5533C",
+    "metre_trophy_hex": "#C9A24A"
+  },
+  "type": {
+    "display": "Fredoka (SIL OFL)",
+    "body": "Nunito (SIL OFL)",
+    "note": "Confirm licences allow print and app use before locking."
+  }
+}

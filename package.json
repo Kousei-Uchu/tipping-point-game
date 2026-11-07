@@ -1,0 +1,22 @@
+{
+  "name": "tipping-point",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Tipping Point digital game: shared engine + React Native (Expo) app that runs on web first and mobile later.",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "sync-content": "node scripts/sync-content.mjs",
+    "test": "npm run test -w @tipping-point/engine && npm run test -w @tipping-point/content && npm run test -w @tipping-point/game",
+    "typecheck": "npm run typecheck -w @tipping-point/engine && npm run typecheck -w @tipping-point/content && npm run typecheck -w @tipping-point/game",
+    "web": "npm run web -w @tipping-point/game",
+    "start": "npm run start -w @tipping-point/game",
+    "build:web": "npm run build:web -w @tipping-point/game"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
