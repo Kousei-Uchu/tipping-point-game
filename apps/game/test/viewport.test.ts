@@ -42,7 +42,7 @@ describe("layout and settings", () => {
     expect(layoutFor(1440, 900).mode).toBe("desktop");
     expect(layoutFor(844, 390).dense).toBe(true);
   });
-  it("sanitizes stored settings", () => {
+  it("sanitises stored settings", () => {
     expect(sanitizeSettings({ textScale: 50, reducedMotion: "yes" })).toEqual({ ...DEFAULT_SETTINGS, textScale: 2 });
     expect(sanitizeSettings(null)).toEqual(DEFAULT_SETTINGS);
   });

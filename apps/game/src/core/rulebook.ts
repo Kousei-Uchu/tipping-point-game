@@ -245,7 +245,7 @@ export const CHAPTERS: readonly Chapter[] = [
         ["What does a bot do?", "It plays by itself. Tap Next to read each card it draws."],
         ["Where did a Steward go?", "Their tile was lost, so they are evacuated and will come back at the Research Station."],
         ["I have actions left. Should I Draw?", "The app asks you to confirm. If nothing useful is left, yes."],
-        ["Nothing I hold matches a damaged tile.", "Move toward a Steward with the right Tool and Gift yours, or Draw and hope for a match."],
+        ["Nothing I hold matches a damaged tile.", "Move towards a Steward with the right Tool and Gift yours, or Draw and hope for a match."],
       ] },
     ],
   },

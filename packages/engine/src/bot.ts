@@ -199,7 +199,7 @@ export function chooseAction(c: GameContent, s: State, actorId?: PlayerId): Acti
     if (ok(a)) return a;
   }
 
-  // 5. Walk toward work.
+  // 5. Walk towards work.
   const target = workTarget(e);
   if (target !== null && target !== p.pos) { const a = stepToward(e, target); if (a && ok(a)) return a; }
 

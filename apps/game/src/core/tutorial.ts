@@ -273,7 +273,7 @@ export const TUTORIAL_STEPS: readonly TutorialStep[] = [
     id: "finish", presentation: "modal", kind: "info",
     title: "You are ready",
     body: () => [
-      "That is everything you need to start playing. You can read the short rules at any time from How to play on the title screen.",
+      "That is everything you need to start playing. You can read the short rules at any time from the Rulebook button on the title screen.",
     ],
   },
 ];

@@ -1,6 +1,6 @@
 # Tipping Point: Making It Feel Like a Board Game
 
-Nov 6, 2026 · @Meatloaf · progress updated Nov 7, 2026
+6 Nov 2026 · @Meatloaf · progress updated 7 Nov 2026
 
 ## Where we are
 
@@ -21,7 +21,7 @@ The game works, but nothing in it has weight: every surface is flat, every contr
 
 **Worth keeping:** each biome already has its own colour, symbol and edge pattern, so identity does not depend on colour alone. There is a text-scale and reduced-motion setting, and the rules engine is separate from the screens, so the whole look can change without touching a rule.
 
-## Progress (Nov 7)
+## Progress (7 Nov)
 
 Phases 1 to 5 are built. The rules engine and content package were not touched. Checked on a real install: `npm run typecheck` clean, engine 40, content 3, app 186 tests passing, `build:web` bundles. Phase 5 has since been looked at in a browser (see below). Nobody has listened to any sound.
 
@@ -38,9 +38,9 @@ Phases 1 to 5 are built. The rules engine and content package were not touched. 
 
 1. **Done: looked at it.** Title, lobby, tutorial, rulebook specimens, Trophy and Collapse were checked in Chromium at phone and desktop size.
 2. **Listen and play.** Audition the 16 sounds and play a game on a real phone for frame rate, since the tweens are JS-driven.
-3. **Decision 3 is made: hands are public** (Nov 7). No pass-the-device cover screen is needed. The Forecast peek stays private (the log and sheet already treat it so) and the in-app rulebook now says hands are open. Still to confirm: that the printed rules in `Tipping_Point.md` say the same.
+3. **Decision 3 is made: hands are public** (7 Nov). No pass-the-device cover screen is needed. The Forecast peek stays private (the log and sheet already treat it so) and the in-app rulebook now says hands are open. Still to confirm: that the printed rules in `Tipping_Point.md` say the same.
 4. **Run the person-with-fresh-eyes checks** (five-second, photograph, Surge, and finishing the tutorial without the rulebook). These cannot be run by a script.
-5. **Fix the known gaps:** the 44 px tap size is done on phones. Per-Event icons are done. Owner tokens and pawns now stay put until their tile's badge shows it lost (Nov 7); seen only in tests, not yet in a running game. Judge by eye whether a phone board that no longer shows every tile at once still passes the squint test.
+5. **Fix the known gaps:** the 44 px tap size is done on phones. Per-Event icons are done. Owner tokens and pawns now stay put until their tile's badge shows it lost (7 Nov); seen only in tests, not yet in a running game. Judge by eye whether a phone board that no longer shows every tile at once still passes the squint test.
 6. **Then decide on Phase 6** (commissioned art) with a real screenshot in hand.
 
 ## Direction: a field survey on punchboard
@@ -235,7 +235,7 @@ The lobby allows two to five Stewards, and any seat can be a human or a bot (eas
 
 Bots should play at a readable pace. Each bot action uses the same moves as a human one (lift, place, stamp), with a short pause between actions, and a Skip control that jumps to the end of the bot's turn. Skip is an accessibility feature as much as a convenience.
 
-**Decided (Nov 7): hands are public.** Tool cards in hand are open information, so a shared device needs no cover between turns and there is no "Pass to Ren" screen. One thing to confirm: the Forecast peek at the top of the deck is the only private information in the engine, and it stays private to the player who used it.
+**Decided (7 Nov): hands are public.** Tool cards in hand are open information, so a shared device needs no cover between turns and there is no "Pass to Ren" screen. One thing to confirm: the Forecast peek at the top of the deck is the only private information in the engine, and it stays private to the player who used it.
 
 ## Teaching through objects
 

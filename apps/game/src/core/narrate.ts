@@ -68,7 +68,7 @@ export function narrate(c: GameContent, s: State, e: GameEvent): LogLine | null 
       return null;
     }
     case "LobbyCharged": return line("Industrial Lobby adds one call.", "bad");
-    case "SurgeFired": return line("Surge. The Metre moves toward the Skull.", "bad");
+    case "SurgeFired": return line("Surge. The Metre moves towards the Skull.", "bad");
     case "SurgeSkipped": return line("Surge skipped by the Calm cover.");
     case "MetreMoved": {
       const from = g<number>("from"), to = g<number>("to");
